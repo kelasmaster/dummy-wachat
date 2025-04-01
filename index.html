@@ -9,20 +9,35 @@
 </head>
 <body>
   <div class="container">
+    <!-- Header Input Section -->
+    <div class="header-input">
+      <h3>WhatsApp Header Details</h3>
+      <form id="header-form">
+        <label>Profile Picture:</label>
+        <input type="text" id="profile-url" placeholder="Enter URL or leave blank for default">
+        <input type="file" id="profile-upload" accept="image/*">
+
+        <label>Name or Phone Number:</label>
+        <input type="text" id="name-or-number" placeholder="Enter name or phone number">
+
+        <button type="button" onclick="updateHeader()">Update Header</button>
+      </form>
+    </div>
+
     <!-- Phone Display -->
     <div class="phone-display">
       <div class="status-bar">
-        <span class="battery">Battery: <input type="range" min="0" max="100" value="100"></span>
-        <span class="wifi"><input type="checkbox" checked> WiFi</span>
-        <span class="signal">Signal: <input type="range" min="0" max="5" value="5"></span>
-        <span class="time"><input type="text" placeholder="Time" value="10:00"></span>
+        <span>Battery: <input type="range" min="0" max="100" value="100"></span>
+        <span><input type="checkbox" checked> WiFi</span>
+        <span>Signal: <input type="range" min="0" max="5" value="5"></span>
+        <span>Time: <input type="text" placeholder="Time" value="10:00"></span>
       </div>
       <div class="whatsapp-interface">
         <!-- Header -->
         <div class="header">
           <i class="back-arrow">←</i>
-          <img class="profile-pic" src="default-profile.jpg" alt="Profile">
-          <span class="name-number">Customer Name</span>
+          <img class="profile-pic" src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg" alt="Profile">
+          <span class="name-number">+1234567890</span>
           <i class="video-call">🎥</i>
           <i class="phone-call">📞</i>
           <i class="menu-dots">⋮</i>
@@ -44,12 +59,15 @@
       </div>
     </div>
 
-    <!-- Data Input Section -->
-    <div class="data-input">
+    <!-- Message Input Section -->
+    <div class="message-input">
       <h3>Add Message</h3>
-      <form id="chat-form">
-        <label>Name:</label>
-        <input type="text" id="name" placeholder="Enter name">
+      <form id="message-form">
+        <label>Sender:</label>
+        <select id="sender">
+          <option value="customer">Customer</option>
+          <option value="owner">Owner (Me)</option>
+        </select>
 
         <label>Message:</label>
         <textarea id="message" placeholder="Enter message"></textarea>
@@ -57,11 +75,9 @@
         <label>Time:</label>
         <input type="time" id="time">
 
-        <label>Photo Profile (Optional):</label>
-        <input type="file" id="photo-profile" accept="image/*">
-
         <label>Photo Product (Optional):</label>
-        <input type="file" id="photo-product" accept="image/*">
+        <input type="text" id="product-url" placeholder="Enter URL or leave blank">
+        <input type="file" id="product-upload" accept="image/*">
 
         <button type="button" onclick="addMessage()">Add Message</button>
       </form>
