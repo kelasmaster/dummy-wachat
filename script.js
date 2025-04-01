@@ -1,35 +1,46 @@
+function updateHeader() {
+  const profileUrl = document.getElementById('profile-url').value;
+  const profileUpload = document.getElementById('profile-upload').files[0];
+  const nameOrNumber = document.getElementById('name-or-number').value || '+1234567890';
+
+  const profilePic = document.querySelector('.profile-pic');
+  const nameNumber = document.querySelector('.name-number');
+
+  if (profileUpload) {
+    profilePic.src = URL.createObjectURL(profileUpload);
+  } else if (profileUrl) {
+    profilePic.src = profileUrl;
+  } else {
+    profilePic.src = 'https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg';
+  }
+
+  nameNumber.textContent = nameOrNumber;
+}
+
 function addMessage() {
-  const name = document.getElementById('name').value || 'Unknown';
+  const sender = document.getElementById('sender').value;
   const message = document.getElementById('message').value;
   const time = document.getElementById('time').value || '10:00';
+  const productUrl = document.getElementById('product-url').value;
+  const productUpload = document.getElementById('product-upload').files[0];
 
   if (!message) {
     alert('Please enter a message.');
     return;
   }
 
-  const photoProfileInput = document.getElementById('photo-profile');
-  const photoProductInput = document.getElementById('photo-product');
-
   const contentArea = document.querySelector('.content-area');
   const messageDiv = document.createElement('div');
-  messageDiv.className = 'message';
-
-  let profilePic = '';
-  if (photoProfileInput.files.length > 0) {
-    const file = photoProfileInput.files[0];
-    profilePic = URL.createObjectURL(file);
-  }
+  messageDiv.className = `message ${sender}`;
 
   let productPic = '';
-  if (photoProductInput.files.length > 0) {
-    const file = photoProductInput.files[0];
-    productPic = URL.createObjectURL(file);
+  if (productUpload) {
+    productPic = URL.createObjectURL(productUpload);
+  } else if (productUrl) {
+    productPic = productUrl;
   }
 
   messageDiv.innerHTML = `
-    <strong>${name}</strong>
-    ${profilePic ? `<img src="${profilePic}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">` : ''}
     <p>${message}</p>
     ${productPic ? `<img src="${productPic}" alt="Product" style="max-width: 100%; margin-top: 5px;">` : ''}
     <small>${time}</small>
@@ -38,8 +49,8 @@ function addMessage() {
 
   // Clear inputs
   document.getElementById('message').value = '';
-  document.getElementById('photo-profile').value = '';
-  document.getElementById('photo-product').value = '';
+  document.getElementById('product-url').value = '';
+  document.getElementById('product-upload').value = '';
 
   // Scroll to bottom
   contentArea.scrollTop = contentArea.scrollHeight;
