@@ -17,6 +17,11 @@ function updateHeader() {
   nameNumber.textContent = nameOrNumber;
 }
 
+document.getElementById('live-typing').addEventListener('input', function () {
+  const liveMessage = document.getElementById('live-message');
+  liveMessage.textContent = this.value || 'Live Preview';
+});
+
 function addMessage() {
   const sender = document.getElementById('sender').value;
   const message = document.getElementById('message').value;
@@ -41,8 +46,8 @@ function addMessage() {
   }
 
   messageDiv.innerHTML = `
+    ${productPic ? `<img src="${productPic}" alt="Product">` : ''}
     <p>${message}</p>
-    ${productPic ? `<img src="${productPic}" alt="Product" style="max-width: 100%; margin-top: 5px;">` : ''}
     <small>${time}</small>
   `;
   contentArea.appendChild(messageDiv);
@@ -54,6 +59,9 @@ function addMessage() {
 
   // Scroll to bottom
   contentArea.scrollTop = contentArea.scrollHeight;
+
+  // Hide live preview
+  document.querySelector('.live-preview').style.display = 'none';
 }
 
 function saveChat() {
