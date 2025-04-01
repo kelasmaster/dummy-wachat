@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dummy WhatsApp Chat</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Phone Display -->
+    <div class="phone-display">
+      <div class="status-bar">
+        <span class="battery">Battery: <input type="range" min="0" max="100" value="100"></span>
+        <span class="wifi"><input type="checkbox" checked> WiFi</span>
+        <span class="signal">Signal: <input type="range" min="0" max="5" value="5"></span>
+        <span class="time"><input type="text" placeholder="Time" value="10:00"></span>
+      </div>
+      <div class="whatsapp-interface">
+        <!-- Header -->
+        <div class="header">
+          <i class="back-arrow">←</i>
+          <img class="profile-pic" src="default-profile.jpg" alt="Profile">
+          <span class="name-number">Customer Name</span>
+          <i class="video-call">🎥</i>
+          <i class="phone-call">📞</i>
+          <i class="menu-dots">⋮</i>
+        </div>
+
+        <!-- Content -->
+        <div class="content-area">
+          <!-- Messages will be dynamically added here -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <i class="sticker-icon">😊</i>
+          <input class="write-message" type="text" placeholder="Type a message...">
+          <i class="clip-icon">📎</i>
+          <i class="camera-icon">📸</i>
+          <i class="microphone-icon">🎤</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Input Section -->
+    <div class="data-input">
+      <h3>Add Message</h3>
+      <form id="chat-form">
+        <label>Name:</label>
+        <input type="text" id="name" placeholder="Enter name">
+
+        <label>Message:</label>
+        <textarea id="message" placeholder="Enter message"></textarea>
+
+        <label>Time:</label>
+        <input type="time" id="time">
+
+        <label>Photo Profile (Optional):</label>
+        <input type="file" id="photo-profile" accept="image/*">
+
+        <label>Photo Product (Optional):</label>
+        <input type="file" id="photo-product" accept="image/*">
+
+        <button type="button" onclick="addMessage()">Add Message</button>
+      </form>
+    </div>
+
+    <!-- Save Button -->
+    <button class="save-btn" onclick="saveChat()">Save as Image</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
