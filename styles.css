@@ -21,6 +21,7 @@ body {
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
+  text-align: right;
 }
 
 .header-input label,
@@ -28,6 +29,7 @@ body {
   display: block;
   margin-top: 10px;
   font-weight: bold;
+  text-align: left;
 }
 
 .header-input input,
@@ -100,18 +102,23 @@ body {
   background-color: #eaeaea;
 }
 
+.live-preview {
+  display: none;
+}
+
 .message {
   display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
   max-width: 70%;
 }
 
 .message.customer {
-  justify-content: flex-start;
+  align-self: flex-start;
 }
 
 .message.owner {
-  justify-content: flex-end;
+  align-self: flex-end;
 }
 
 .message p {
@@ -125,8 +132,12 @@ body {
   background-color: #fff;
 }
 
+.message img {
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
 .message small {
-  display: block;
   font-size: 10px;
   color: #666;
   margin-top: 5px;
